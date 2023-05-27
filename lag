@@ -1,0 +1,106 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Youtube:MrCaso", HidePremium = false, IntroText = "LAG MOBILE", SaveConfig = true, ConfigFolder = "OrionTest"})
+
+local Main = Window:MakeTab({
+	Name = "FIX LAG",
+	Icon = "",
+	PremiumOnly = false
+})
+
+local fixlag = Main:AddSection({
+	Name = "Giảm Đồ Họa BloxFruit"
+})
+
+OrionLib:MakeNotification({
+	Name = "LAG MOBILE",
+	Content = "ĐĂNG KÝ KÊNH ĐÊ",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+Main:AddButton({
+	Name = "Giảm Đồ Họa - Low Graphics",
+	Callback = function()
+		settings().Rendering.QualityLevel = "Level01"
+		for i, v in pairs(g:GetDescendants()) do
+			if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+				v.Material = "Plastic"
+				v.Reflectance = 0
+			elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+				v.Transparency = 1
+			elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+				v.Lifetime = NumberRange.new(0)
+			elseif v:IsA("Explosion") then
+				v.BlastPressure = 1
+				v.BlastRadius = 1
+			elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") then
+				v.Enabled = false
+			elseif v:IsA("MeshPart") then
+				v.Material = "Plastic"
+				v.Reflectance = 0
+				v.TextureID = 10385902758728957
+			end
+		end
+		for i, e in pairs(l:GetChildren()) do
+			if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+				e.Enabled = false
+			end
+		end
+  	end 
+game:GetService("StarterGui"):SetCore("Resolution", {x = 1024, y = 768})
+game:GetService("Workspace").StreamingEnabled = false
+game:GetService("GraphicsSettings").LevelOfDetailBias = 2
+game:GetService("Lighting").GlobalShadows = false
+game:GetService("Lighting").Technology = "Legacy"
+_G.Settings = {
+			Players = {
+				["Ignore Me"] = true, -- Ignore your Character
+				["Ignore Others"] = true -- Ignore other Characters
+			}
+		local Players = game:GetService("Players"
+		end
+		local function ReturnDescendants()
+			local Descendants = {}
+			WaitNumber = 5000
+			if _G.Settings.Players["Ignore Others"] then
+				for i, v in pairs(game:GetDescendants()) do
+					if not v:IsDescendantOf(Players) and not PartOfCharacter(v) then
+						for i2, v2 in pairs(BadInstances) do
+							if v:IsA(v2) then
+								table.insert(Descendants, v)
+							end
+						end
+					end
+					if i == WaitNumber then
+						task.wait()
+						WaitNumber = WaitNumber + 5000
+					end
+				end
+			elseif _G.Settings.Players["Ignore Me"] then
+				for i, v in pairs(game:GetDescendants()) do
+					if not v:IsDescendantOf(Players) and not v:IsDescendantOf(ME.Character) then
+						for i2, v2 in pairs(BadInstances) do
+							if v:IsA(v2) then
+								table.insert(Descendants, v)
+							end
+						end
+					end
+					if i == WaitNumber then
+						task.wait()
+						WaitNumber = WaitNumber + 5000
+					end
+				end
+			end
+			return Descendants
+		end
+		
+		if _G.Settings["Low Rendering"] or (_G.Settings.Other and _G.Settings.Other["Low Rendering"]) then
+			settings().Rendering.QualityLevel = 1
+		end
+  	end    
+}   
+})
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
